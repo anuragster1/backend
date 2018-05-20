@@ -20,6 +20,7 @@ import com.tecsolvent.wizspeak.notification.dao.Notification.Type;
 
 public class WizNotification {
 	public static /*Map<String, String>*/ void createNotification(long userId, Category category, long actorId, long postId, Type notificationType, Map<String, String> msgContainer, boolean isActorSubscriber) throws HttpException, IOException{
+		System.out.println("creating notification in WizNotification");
 		final HttpClient httpClient = new HttpClient();
 		Gson gson = new Gson();
 		Map<String, String> requestMap = new HashMap<String, String>();
@@ -49,7 +50,11 @@ public class WizNotification {
 			InputStream is = postMethod.getResponseBodyAsStream();
 			String str = getStringFromInputStream(is);
 			System.out.println(str);
-		}finally{
+		}catch(Exception e){
+			System.err.println("Exception in notification creation");
+			System.err.println(e);
+		}
+		finally{
 			postMethod.releaseConnection();
 		}
 	}

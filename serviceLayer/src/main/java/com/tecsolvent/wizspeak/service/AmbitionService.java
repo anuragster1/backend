@@ -774,11 +774,11 @@ logger.info("feching as single post for user details");
                 }catch(Exception e){
                         System.err.println(e);
                 }
-
+		System.out.println("out of try catch")
 		Map<String, String> msgContainer = new HashMap<String, String>();
 		msgContainer.put("name", name);
 		msgContainer.put("picUrl", userPicURL);
-
+		System.out.println("populated msgContainer!!");
 		//logger.info("Like invoked!! Sending notification now!! userid - " + userId + " and actorId - " + actorId);
 		//wizspeakUpstreamHandler.sendNotification(userId, com.tecsolvent.wizspeak.notification.dao.Notification.Category.AMBITION, actorId, (Long) like.get("item_id"), Type.LIKE, msgContainer, true);
 		
