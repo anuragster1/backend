@@ -10,7 +10,7 @@ import com.tecsolvent.wizspeak.notification.upstream.handler.impl.WizspeakUpstre
 import com.tecsolvent.wizspeak.utility.DateUtil;
 import com.tecsolvent.wizspeak.utility.StringUtil;
 
-import wizspeak.notification.client.client.WizNotifiation;
+import wizspeak.notification.client.client.WizNotification;
 
 import org.apache.log4j.Logger;
 import com.tecsolvent.wizspeak.kafka.KafkaConsumer;
@@ -783,7 +783,7 @@ logger.info("feching as single post for user details");
 		//wizspeakUpstreamHandler.sendNotification(userId, com.tecsolvent.wizspeak.notification.dao.Notification.Category.AMBITION, actorId, (Long) like.get("item_id"), Type.LIKE, msgContainer, true);
 		
 		//likeUpstreamHandler.sendNotification(postOwnerId, com.tecsolvent.wizspeak.notification.dao.Notification.Category.AMBITION, actorId, (Long) like.get("item_id"), Type.LIKE, msgContainer, false);
-		WizNotifiation.createNotification(postOwnerId, com.tecsolvent.wizspeak.notification.dao.Notification.Category.AMBITION, actorId, (Long) like.get("item_id"), Type.LIKE, msgContainer, false);
+		WizNotification.createNotification(postOwnerId, com.tecsolvent.wizspeak.notification.dao.Notification.Category.AMBITION, actorId, (Long) like.get("item_id"), Type.LIKE, msgContainer, false);
 		return likeStatus;
 	}
 
