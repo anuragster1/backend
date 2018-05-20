@@ -31,7 +31,7 @@ public class WizNotification {
 		requestMap.put("postId", ""+postId);
 		requestMap.put("category", ""+category);
 		requestMap.put("type", ""+notificationType.name());
-		requestMap.put("msgContainer", ""+gson.toJson(msgContainer));
+		//requestMap.put("msgContainer", ""+gson.toJson(msgContainer));
 		
 		PostMethod postMethod = null;
 		try{
@@ -40,15 +40,10 @@ public class WizNotification {
 			System.out.println("create notification url - " + url);
 			postMethod = new PostMethod(url);
 			postMethod.addRequestHeader("Content-Type", "application/json");
-			/*NameValuePair[] data = {
-				    new NameValuePair("userId", ""+userId),
-				    new NameValuePair("actorId", ""+actorId),
-				    new NameValuePair("postId", ""+postId),
-				    new NameValuePair("category", ""+category),
-				    new NameValuePair("type", ""+notificationType.name()),
+			NameValuePair[] data = {
 				    new NameValuePair("msgContainer", gson.toJson(msgContainer))
 				};
-			postMethod.setRequestBody(data);*/
+			postMethod.setRequestBody(data);
 			
 			httpClient.executeMethod(postMethod);
 			InputStream is = postMethod.getResponseBodyAsStream();
