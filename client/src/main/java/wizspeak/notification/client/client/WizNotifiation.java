@@ -21,7 +21,7 @@ public class WizNotifiation {
 	public static /*Map<String, String>*/ void createNotification(long userId, Category category, long actorId, long postId, Type notificationType, Map<String, String> msgContainer, boolean isActorSubscriber) throws HttpException, IOException{
 		final HttpClient httpClient = new HttpClient();
 		Gson gson = new Gson();
-		PostMethod postMethod = new PostMethod("http://18.216.183.133:8080/backend/notifications");
+		PostMethod postMethod = new PostMethod("http://18.216.183.133:8081/backend/notifications");
 		try{
 			postMethod.addRequestHeader("Content-Type", "application/json");
 			NameValuePair[] data = {
@@ -49,7 +49,7 @@ public class WizNotifiation {
 	
 	public static Map<String, Object> getNotifications(long userId) throws HttpException, IOException{
 		final HttpClient httpClient = new HttpClient();
-		GetMethod getMethod = new GetMethod("http://18.216.183.133:8080/backend/notifications"+"/"+userId);
+		GetMethod getMethod = new GetMethod("http://18.216.183.133:8081/backend/notifications"+"/"+userId);
 		try{
 			getMethod.addRequestHeader("Content-Type", "application/json");
 			/*NameValuePair[] data = {
