@@ -14,11 +14,11 @@
 		<property name="redisPort" value="6379" />
 	</bean>
 	
-	<bean id="wizspeakUpstreamHandler"
+	<!-- <bean id="wizspeakUpstreamHandler"
 		class="com.tecsolvent.wizspeak.notification.upstream.handler.impl.LikeWizspeakUpstreamHandler">
 		<property name="notificationService" ref="likeNotificationService" />
 		<property name="keyValueCache" ref="keyValueCache" />
-	</bean>
+	</bean> -->
 	
 	<bean id="likeNotificationService"
 		class="com.tecsolvent.wizspeak.notification.services.LikeNotificationServiceImpl">
