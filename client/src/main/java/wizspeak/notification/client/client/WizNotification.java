@@ -75,7 +75,7 @@ public class WizNotification {
 				isFirst = false;
 			}
 		}
-		return URLEncoder.encode(sb.toString(), "UTF-8");
+		return sb.toString();
 	}
 	
 	/*public static boolean markNotificationAsRead(String notificationId){
