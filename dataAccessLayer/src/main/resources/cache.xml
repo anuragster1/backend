@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="propertyPlaceholderConfigurerCache"
+		  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+		<property name="locations">
+			<list>
+				<value>classpath:cache.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="guavaAndCouchbaseCache" class="com.tecsolvent.wizspeak.cache.GuavaAndCouchbaseCache" init-method="init" destroy-method="shutdown">
+		<property name="host" value="${couchbase.host}"/>
+		<property name="port" value="${couchbase.port}"/>
+		<property name="username" value="${couchbase.username}"/>
+		<property name="password" value="${couchbase.password}"/>
+		<property name="bucket" value="${couchbase.bucket}"/>
+		<property name="operationTimeout" value="${couchbase.operation.timeout}"/>
+		<property name="queueMaxBlockTimeout" value="${couchbase.operation.queue.block.timeout}"/>
+		<property name="compressionThreshHold" value="${couchbase.compression.threshhold}"/>
+		<property name="queueSize" value="${couchbase.queue.size}"/>
+		<property name="enableGuavaCache" value="${enable.guava.cache}"/>
+		<property name="guavaCacheDefaultExpiry" value="${guava.cache.default.expiry}"/>
+		<property name="couchBaseDefaultExpiry" value="${couchbase.default.expiry}"/>
+	</bean>
+
+</beans>
