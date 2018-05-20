@@ -33,8 +33,9 @@ public class WizNotification {
 		String parameters = concatenate(requestMap);
 		String url = "http://18.216.183.133:8081/backend/notifications" + parameters;
 		System.out.println("create notification url - " + url);
-		PostMethod postMethod = new PostMethod(url);
+		PostMethod postMethod = null;
 		try{
+			postMethod = new PostMethod(url);
 			postMethod.addRequestHeader("Content-Type", "application/json");
 			/*NameValuePair[] data = {
 				    new NameValuePair("userId", ""+userId),
@@ -55,7 +56,9 @@ public class WizNotification {
 			System.err.println(e);
 		}
 		finally{
-			postMethod.releaseConnection();
+			if(postMethod != null){
+				postMethod.releaseConnection();
+			}
 		}
 	}
 	
