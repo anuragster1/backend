@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,11 +32,12 @@ public class WizNotification {
 		requestMap.put("category", ""+category);
 		requestMap.put("type", ""+notificationType.name());
 		requestMap.put("msgContainer", ""+gson.toJson(msgContainer));
-		String parameters = concatenate(requestMap);
-		String url = "http://18.216.183.133:8081/backend/notifications" + parameters;
-		System.out.println("create notification url - " + url);
+		
 		PostMethod postMethod = null;
 		try{
+			String parameters = concatenate(requestMap);
+			String url = "http://18.216.183.133:8081/backend/notifications" + parameters;
+			System.out.println("create notification url - " + url);
 			postMethod = new PostMethod(url);
 			postMethod.addRequestHeader("Content-Type", "application/json");
 			/*NameValuePair[] data = {
@@ -54,15 +57,14 @@ public class WizNotification {
 		}catch(Exception e){
 			System.err.println("Exception in notification creation");
 			System.err.println(e);
-		}
-		finally{
+		}finally{
 			if(postMethod != null){
 				postMethod.releaseConnection();
 			}
 		}
 	}
 	
-	private static String concatenate(Map<String, String> requestMap){
+	private static String concatenate(Map<String, String> requestMap) throws UnsupportedEncodingException{
 		StringBuilder sb = new StringBuilder();
 		boolean isFirst = true;
 		if(requestMap != null){
@@ -78,7 +80,7 @@ public class WizNotification {
 				isFirst = false;
 			}
 		}
-		return sb.toString();
+		return URLEncoder.encode(sb.toString(), "UTF-8");
 	}
 	
 	/*public static boolean markNotificationAsRead(String notificationId){
